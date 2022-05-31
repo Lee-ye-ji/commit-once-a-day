@@ -125,7 +125,6 @@ interface를 상속하는 것은 가능하지만 class를 다중 상속하는 �
 interface 동물{
   leg: number;
   eye: number;
-  army: number;
 }
 
 interface 포유류{
