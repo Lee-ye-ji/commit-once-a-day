@@ -92,7 +92,9 @@ function brewBeer(beer: CraftBeer){
   // ...
 }
 
-brewBeer({ brandon: 'what' }); // error: Object literal may only specify known properties, but 'brandon' does not exist in type 'CraftBeer'. Did you mean to write 'brand'?
+brewBeer({ brandon: 'what' });
+// error: Object literal may only specify known properties, 
+// but 'brandon' does not exist in type 'CraftBeer'. Did you mean to write 'brand'?
 ```
 위 코드를 보면 `CraftBeer`인터페이스에는 `brand`라고 선언되어 있지만 
 `brewBeer()`함수에 인자로 넘기는 `myBeer`객체에는 `brandon`이 선언되어 있어 오탈자 점검을 요하는 오류가 난다.
@@ -108,6 +110,145 @@ interface CraftBeer {
   brand?: string;
   [propName: string]: any;
 }
+```
+
+## 함수 타입
+인터페이스는 함수의 타입을 정의할 때에도 사용할 수 있다.
+```ts
+interface login{
+  (username: string, password: string): boolean;
+}
+```
+함수의 인자의 타입과 반환 값의 타입을 정한다.
+```ts
+let loginUser: login;
+loginUser = function(id: string, pw: string){
+  console.log('로그인 완료');
+  return true;
+}
+```
+
+## 클래스 타입
+c#이나 자바처럼 타입스크립트에서도 클래스가 일정 조건을 만족하도록 타입 규칙을 정할 수 있다.
+```ts
+interface CraftBeer{
+  beerName: string;
+  nameBeer(beer: string): void;
+}
+
+class myBeer implements CraftBeer{
+  beerName: string = 'cass';
+  nameBeer(b: string){
+    this.beerName = b;
+  }
+  constructor() {}
+}
+```
+
+## 인터페이스 확장
+```ts
+interface Person {
+  name: string;
+}
+interface Developer extends Person {
+  skill: string;
+}
+let fe = {} as Developer;
+fe.name = 'yeji';
+fe.skill = 'TypeScript';
+```
+여러 인터페이스를 상속 받아 사용할 수 있다.
+```ts
+interface Person {
+  name: string;
+}
+interface Drinker {
+  drink: string;
+}
+interface Developer extends Person {
+  skill: string;
+}
+let fe = {} as Developer;
+fe.name = 'yeji';
+fe.skill = 'TypeScript';
+fe.drink = 'Beer';
+```
+* 클래스와 마찬가지로 인터페이스도 인터페이스 간의 확장이 가능하다.
+* `extends` 키워드를 사용하여 인터페이스 또는 클래스를 상속받을 수 있다.
+```ts
+interface Animal {
+    makeSound(): void
+}
+ 
+interface Dog extends Animal {
+    speed: number
+}
+ 
+class Bulldog implements Dog {
+    speed: 10;
+    makeSound(): void {
+        console.log('멍멍');
+    }
+}
+```
+* 복수의 인터페이스를 상속받을 수도 있다.
+```ts
+interface Person {
+  name: string;
+  age?: number;
+}
+ 
+interface Developer {
+  skills: string[];
+}
+ 
+interface WebDeveloper extends Person, Developer {}
+ 
+const webDeveloper: WebDeveloper =  {
+  name: 'Lee',
+  age: 20,
+  skills: ['HTML', 'CSS', 'JavaScript']
+}
+```
+* 인터페이스는 인터페이스 뿐만 아니라 클래스도 상속받을 수 있다.
+* 단, 클래스의 모든 멤버(public, protected, private)가 상속되지만 구현까지는 상속하지 않는다.
+```ts
+class Person {
+  constructor(public name: string, public age: number) {}
+}
+ 
+interface Developer extends Person {
+  skills: string[];
+}
+ 
+const developer: Developer =  {
+  name: 'Lee',
+  age: 20,
+  skills: ['HTML', 'CSS', 'JavaScript']
+}
+```
+
+## 하이브리드 타입
+* 자바스크립트의 유연하고 동적인 타입 특성에 따라 인터페이스 역시 여러 타입을 조합할 수 있다.
+* 아래의 코드와 같이 함수 타입이면서 객체 타입을 정의할 수 있는 인터페이스도 구현할 수 있다.
+```ts
+interface Counter {
+    (start: number): string;
+    interval: number;
+    reset(): void;
+}
+ 
+function getCounter(): Counter {
+    let counter = function (start: number) {} as Counter;
+    counter.interval = 123;
+    counter.reset = function () {};
+    return counter;
+}
+ 
+let c = getCounter();
+c(10);
+c.reset();
+c.interval = 5.0;
 ```
 
 ### Java에서 interface란?
