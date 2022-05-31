@@ -117,7 +117,7 @@ interface CraftBeer {
 interface를 이용하여 다중 상속해야한다. 
 `ex) public class 강아지 extends 동물 implements 포유류{...}`
 
-## 그러면 TS에서도 다중 상속이 불가능한가?
+### 그러면 TS에서도 다중 상속이 불가능한가?
 interface를 상속하는 것은 가능하지만 class를 다중 상속하는 것은 불가능하다. 
  `이는 자바도 같다.`
 즉, 아래와 같이 `dog`의 인터페이스는 포유류와 동물의 속성을 받을 수 있다.
