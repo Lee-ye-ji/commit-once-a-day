@@ -35,3 +35,17 @@
 * state는 불변성을 유지 해야하기 때문
 * 컴포넌트는 setState를 비교해서 업데이트가 필요한 경우에만 render함수를 호출하는데 state를 직접 수정하게 되면 
 * react가 render함수를 호출하지 않아 상태 변경이 일어나도 렌더링이 일어나지 않을 수 있음
+
+# class component와 functional component의 차이점
+* class component는 여러 단계 상속으로 인해 복잡성과 오류 가능성을 증가 시킴
+* 이로 인해 functional component가 탄생하게 됨
+* functional component는 hooks를 이용하여 생명주기에 원하는 동작을 할 수 있으며,
+* class component는 life cycle을 가져 생명주기 메소드를 알고 있어야 함
+
+#  virtual DOM이 무엇인가요? virtual DOM이 좋은 이유는?
+* virtual DOM은 실제 DOM 변화를 최소화 시켜주는 역할을 함
+* virtual DOM을 사용하면 효율성을 높일 수 있고, 시간 복잡도를 낮출 수 있음
+* ex) 만약 HTML 파일에 20개의 변화가 생기면 과정 역시 20회가 이루어짐
+* 하지만 virtual DOM은 변화된 부분만 가려내어 실제 DOM에 전달하기 때문에 실제 DOM은 1회로 인식함
+
+
