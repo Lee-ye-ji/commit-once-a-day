@@ -65,3 +65,7 @@
 # React 에서 상태 변화가 생겼을 때, 변화를 어떻게 알아채는지에 대해서 설명하세요.
 * react에서 상태는 불변성을 띄고 있음
 * 그렇기 때문에 상태의 주소값이 변경이 되면 변화가 되었다는 것을 알 수 있음
+
+# useEffect 메소드로 componentWillUnmount 가 동작할 수 있는 방법에 대해서 설명하세요.
+* componentWillUnmount는 컴포넌트가 화면에서 사라질 때 동작하는 lifeCycle이다.
+* 주로 setTimeOut메소드를 걸은 게 있다면 componentWillUnmount에서 clearTimeout()으로 제거함
