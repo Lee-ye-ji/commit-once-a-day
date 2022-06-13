@@ -59,3 +59,10 @@ AJAX는 비동기 자바스크립트 XML의 약자로써 클라이언트와 서�
 * 이외에도 var는 1) 선언 + 초기화 한번에 이뤄나서 2) 할당 전에 값을 출력해도 undefined가 찍히게 됨
 * 반면에 let은 1) 선언 2) 초기화 3) 할당이 3번에 일어나서 값을 선언하고 초기화 전에 출력하면 reference Error가 나옴
 * 마지막인 const는 1) 선언 + 초기화 + 할당이 한번에 일어나기 때문에 syntax Error가 나오게 된다.
+
+# event loop란?
+자바스크립트 엔진이 call stack과 callback queue의 상태를 체크하여 call stack이 빈 상태가 되면, callback queue에 있던 첫번째 콜백을 call stack으로 밀어넣는 것을 의미함
+
+# Javascript Scope Chaining?
+실행 컨텍스트 내에서 변수를 탐색할 때 중복된 변수가 있더라도 먼저 탐색된 변수를 우선적으로 실행시키는 방식
+
