@@ -7,3 +7,5 @@
 * 호출 스택에 시간이 많이 걸리는 함수가 있다면 문제가 발생하게 된다.
 * (이 문제는 비동기함수로 처리할 수 있음)
 
+# event loop란?
+자바스크립트 엔진이 call stack과 callback queue의 상태를 확인하여 call stack이 빈 상태가 되면, callback queue에 있던 첫번째 콜백을 call stack으로 밀어 넣는 것을 의미함
